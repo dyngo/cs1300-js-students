@@ -1,6 +1,6 @@
 var corsApiUrl = "https://cors-anywhere.herokuapp.com/";
 // TODO: REPLACE YOUR TOKEN
-var apiToken = "?token=YOUR_TOKEN_HERE";
+var apiToken = "djzJbE805xyTGGPQJvlfohGxTCZYokUXTT1DiLc3cJA";
 
 // CORS stands for "cross origin resource sharing" -- you'll be making http requests in order
 // DON'T CHANGE THIS: fetches the data from the API endpoint
@@ -29,3 +29,25 @@ corsPromise().then(
 );
 
 //// TODO: ADD WHATEVER FUN CONTENT YOU WANT ////
+
+const displayDiv = () => {
+  const wrapper = document.createElement("div");
+  wrapper.setAttribute("id","wrapper");
+  const header = document.createElement("h1");
+  header.innerText = "My h1";
+  wrapper.appendChild(header);
+  document.getElementById("plants").appendChild(wrapper);
+};
+
+
+
+const handleResponse = (requestResponse) => {
+  const jsonified = JSON.parse(requestResponse);
+  const plantsArray = jsonified.data;
+
+  const plantsAfter1753 = plantsArray.filter((arrayItem) => {
+    return arrayItem.year > 1753;
+  })
+
+  plantsAfter1753.map(console.log)
+};
